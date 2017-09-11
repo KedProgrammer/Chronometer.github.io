@@ -20,11 +20,12 @@
 
 .main{
   border-radius: 3px;
-  width: 150px;
-  height: 120px;
+  width: 50%;
+  height: 200px;
   border: 0.5px solid #a39ba3;
   margin: 5px;
-  padding: 1%;
+  
+  padding: 0px;
 
 }
 
@@ -32,22 +33,13 @@
   height: 50px;
 }
 
-.title{
-position: relative;
-right: 60px;
-font-size: 0.6em;
-}
-.proyect{
-position: relative;
-right: 55px;
-font-size: 0.6em;
-}
+
 .child{
 
   display: block;
 }
 .input{
-height: 20px;
+height: 10%;
 border-radius: 2px;
 }
 
@@ -62,11 +54,7 @@ a {
   height: 5px;
 }
 
-.form-buttons span{
-  position: relative;
-bottom: 9px;
-font-size: 0.8em;
-}
+
 
 #create{
 border-color: #A45EF2;
@@ -84,6 +72,98 @@ border-color: #A45EF2;
 #cancel:hover{
   background-color: #F5A5A5;
 }
+
+
+.container{
+  display: grid;
+  justify-items:center;
+}
+
+
+
+.chronomter{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.center{
+  align-self: center;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.botton-container{
+
+}
+
+#title{
+  font-weight: bold;
+  font-size: 1.8em;
+}
+
+#proyect{
+ color: #848d95;
+}
+ #main-button{
+  
+border-radius: 0px;
+background-color: transparent;
+color: red;
+ position: relative;
+ top: 7%;
+ }
+
+ .submain{
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+ }
+
+ .stop{
+  border-color: red;
+  color: red;
+ }
+.start{
+  border-color: green;
+  color: green !important;
+ }
+
+
+img{
+  height: 20px;
+  width: 20px;
+  position: relative;
+  top: 30%;
+  align-self: end;
+  left: 90%;
+}
+
+.image-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.child{
+  padding: 5%;
+}
+
+.proyect{
+  font-weight: bold;
+}
+
+.group-buttons{
+  display: grid;
+  justify-items:center;
+}
+
+
+.form{
+  margin: 2px;
+  width: 78px;
+}
+
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

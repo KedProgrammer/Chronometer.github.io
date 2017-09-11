@@ -3,7 +3,8 @@ import millisecondsToHuman from './chronometer'
 import {Button , FormControl, ButtonGroup } from 'react-bootstrap';
 import './App.css';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-
+import  image from './edit.png';
+import borrar from './delete.png';
 
 
 class Main extends Component {
@@ -13,7 +14,7 @@ class Main extends Component {
      this.start = this.start.bind(this);
     this.state = {
       textos: [
-      {texto: millisecondsToHuman(0), id:0, milisegundos: 1000, state: "Comenzar", tittle: "", proyect:"" ,done: true},
+      {texto: millisecondsToHuman(0), id:0, milisegundos: 1000, state: "Comenzar", tittle: "Estudiar", proyect:"Make it real" ,done: true},
       {texto: millisecondsToHuman(0), id:0, milisegundos: 1000, state: "Comenzar" ,tittle: "", proyect: "", done: true}
       ],
       tittle: "",
@@ -25,40 +26,32 @@ class Main extends Component {
   render() {
     return (
      
-           <Grid fluid>
+        <div className='container'>
          {this.state.textos.map((text, index) =>   
-
-	    	<Row >
-	    	<div>{text.done ? "done" : "false"}</div>
-	    	<div>{this.state.tittle}</div>
-	    	<div>{this.state.proyect}</div>
-	          <Col  xs={12} md={3}>
-	    			<Row center={"xs"}>
 	    				<div className="main">
 	    					{ text.done ? this.task(text,index) : this.form(index)}
-	    					 
-
-	    				</div>
-	    			</Row>
-	          </Col>
-	        </Row>
+	    				</div>		
         )}
          <Button bsStyle="info" onClick={this.addTask.bind(this)} >Nueva tarea</Button>
-    </Grid>
- 
+        </div>
     )
   }
 
 task(text,index){
 	return(
-		<div>
-		<span>{text.tittle}</span>
-		<span>{text.proyect}</span>
-		<Button bsStyle="info" onClick={text.state === "Stop" ? () => this.stop(text.id,index) : () => this.start(index)} >{text.state}</Button>
-        <div>{text.texto}</div>
-        <Button bsStyle="info" onClick={() => this.toggleDone(index)} >editar</Button>
+		<div className="chronomter">
+      <div className="submain">
+    		<span id="title">{text.tittle}</span>
+    		<span id="proyect">{text.proyect}</span>
+        <div className="center">{text.texto}</div>
+        <div className="image-container">
+          <img src={image} alt="my image" onClick={() => this.toggleDone(index)} />
+          <img src={borrar} alt="my image" onClick={() => this.delete(index)} />
         </div>
+     </div>
 
+  	<Button id="main-button" className={text.state === "Stop" ? "stop" : "start"}bsStyle="info" onClick={text.state === "Stop" ? () => this.stop(text.id,index) : () => this.start(index)} >{text.state}</Button>
+    </div>
 		)
 }
 
@@ -71,21 +64,21 @@ form(index){
 				<div >
 					<div >
 					 <div >
-					 	<span className="title">Title</span>
+					 	<span className="proyect">Title</span>
 					 </div>
 					 </div>
 					 <div>
-					 	 <input onChange={this.setTitle.bind(this)} className="input" />
+					 	 <FormControl onChange={this.setTitle.bind(this)} className="input" />
 					 </div>
 					  <div>
 					 	<span className="proyect">Proyect</span>
 					 </div>
 					 <div >
-					 	 <input onChange={this.setProyect.bind(this)} className="input" />
+					 	 <FormControl onChange={this.setProyect.bind(this)} className="input" />
 					 </div>
 					 <div className="group-buttons" >
-					    <Button onClick={() => this.setUp(index)}  className="form-buttons" id="create"><span>Create</span></Button>
-					    <Button className="form-buttons" id="cancel"><span>Canacel</span></Button> 
+					    <Button onClick={() => this.setUp(index)}  className="form" id="create"><span>Create</span></Button>
+					    <Button className="form" id="cancel"><span>Canacel</span></Button> 
 					 </div>
 				</div>
 			
@@ -201,6 +194,13 @@ prueba(index){
         })
   	})
 
+}
+
+delete(index){
+  var tasks = this.state.textos;
+      this.setState({
+        textos: tasks.slice(0,index).concat(tasks.slice(index + 1))
+    })
 }
 
 }
