@@ -111,7 +111,7 @@ border-radius: 0px;
 background-color: transparent;
 color: red;
  position: relative;
- top: 7%;
+
  }
 
  .submain{
@@ -153,8 +153,9 @@ img{
 }
 
 .group-buttons{
-  display: grid;
+  display: flex;
   justify-items:center;
+  flex-direction: row;
 }
 
 
